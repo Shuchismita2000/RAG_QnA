@@ -1,4 +1,4 @@
-PDFs → Text → Chunks → Embeddings → FAISS
+PDFs → Text → Chunks → Embeddings → Pinecone
                                    ↓
                              Retriever
                                    ↓

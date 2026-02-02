@@ -1,20 +1,23 @@
 import os
 import sys
-from pathlib import Path
-from .config import DATA_DIR, INDEX_DIR
+from .config import DATA_DIR
 from .loaders import load_pdfs
 from .chunking import chunk_documents
-from .vectorstore import build_faiss_index, load_faiss_index
+from .vectorstore import (
+    build_pinecone_index,
+    load_pinecone_index,
+    pinecone_index_is_empty,
+)
 from .qa_chain import build_qa_chain
 
 
 def ensure_index():
-    if Path(INDEX_DIR).exists() and any(Path(INDEX_DIR).iterdir()):
-        return load_faiss_index(INDEX_DIR)
+    if not pinecone_index_is_empty():
+        return load_pinecone_index()
 
     docs = load_pdfs(DATA_DIR)
     chunks = chunk_documents(docs)
-    return build_faiss_index(chunks, INDEX_DIR)
+    return build_pinecone_index(chunks)
 
 
 def main():

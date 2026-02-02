@@ -20,12 +20,12 @@ embeddings = GoogleGenerativeAIEmbeddings(
 )
 ```
 
-VECTOR STORE (FAISS = SAFE & FAST)
+VECTOR STORE (Pinecone = managed & scalable)
 
 ```python 
-from langchain.vectorstores import FAISS
+from langchain_pinecone import PineconeVectorStore
 
-vectorstore = FAISS.from_documents(docs, embeddings)
+vectorstore = PineconeVectorStore.from_documents(docs, embeddings, index_name=PINECONE_INDEX_NAME)
 retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
 ```
 
