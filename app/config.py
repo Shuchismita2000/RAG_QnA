@@ -19,7 +19,7 @@ PINECONE_REGION = os.getenv("PINECONE_REGION", "us-east-1")
 
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 150
-RETRIEVER_K = 4
+RETRIEVER_K = 10
 
 EMBEDDING_MODEL = "text-embedding-3-small"
 LLM_MODEL = "gpt-4o-mini"
