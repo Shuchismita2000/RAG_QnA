@@ -1,7 +1,5 @@
 from pathlib import Path
-from langchain.document_loaders import PyPDFLoader
-
-
+from langchain_community.document_loaders import PyPDFLoader
 
 def load_pdfs(data_dir: str):
     data_path = Path(data_dir)

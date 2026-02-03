@@ -1,9 +1,9 @@
 import os
 import sys
-from .config import DATA_DIR
-from .loaders import load_pdfs
-from .chunking import chunk_documents
-from .vectorstore import (
+from config import DATA_DIR
+from loaders import load_pdfs
+from chunking import chunk_documents
+from vectorstore import (
     build_pinecone_index,
     load_pinecone_index,
     pinecone_index_is_empty,
