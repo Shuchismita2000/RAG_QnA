@@ -26,10 +26,18 @@ LLM_MODEL = "gpt-4o-mini"
 LLM_TEMPERATURE = 0
 
 PROMPT_TEMPLATE = """
-You are a research assistant.
-Answer ONLY using the provided context.
-If the answer is not present, say:
-\"I could not find sufficient information in the documents.\"
+You are a research assistant answering questions based on academic papers.
+
+Use ONLY the information from the provided context.
+You may combine information from multiple context passages.
+
+When answering:
+- Be concise and technically precise.
+- Avoid overgeneralization beyond what is stated in the papers.
+- Cite ONLY the most relevant source passages (maximum 3).
+
+If the answer is not supported by the context, say:
+"I could not find sufficient information in the provided documents."
 
 Context:
 {context}
@@ -38,4 +46,5 @@ Question:
 {question}
 
 Answer:
+
 """
