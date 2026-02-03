@@ -1,11 +1,15 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-DATA_DIR = os.getenv("DATA_DIR", "..\\RAG Project Dataset")
+
+# DATA_DIR: use env var if set, otherwise default to "RAG Project Dataset" at project root
+_default_data_dir = Path(__file__).parent.parent / "RAG Project Dataset"
+DATA_DIR = os.getenv("DATA_DIR", str(_default_data_dir))
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
 PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "rag-qna")
 PINECONE_NAMESPACE = os.getenv("PINECONE_NAMESPACE", "default")

@@ -37,9 +37,14 @@ def main():
 
     print(f"Answer: {answer}\n")
     print("Sources:")
+    seen = set()
     for doc in source_docs:
         src = doc.metadata.get("source", "")
         page = doc.metadata.get("page", None)
+        key = (src or "", page)
+        if key in seen:
+            continue
+        seen.add(key)
         if page is not None:
             print(f"- {os.path.basename(src)} (Page {page})")
         else:
