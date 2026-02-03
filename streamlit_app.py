@@ -1,15 +1,15 @@
 import os
 import streamlit as st
 
-from src.config import DATA_DIR
-from src.loaders import load_pdfs
-from src.chunking import chunk_documents
-from src.vectorstore import (
+from app.config import DATA_DIR
+from app.loaders import load_pdfs
+from app.chunking import chunk_documents
+from app.vectorstore import (
     build_pinecone_index,
     load_pinecone_index,
     pinecone_index_is_empty,
 )
-from src.qa_chain import build_qa_chain
+from app.qa_chain import build_qa_chain
 
 
 st.set_page_config(page_title="RAG QnA Chatbot", page_icon="💬")
