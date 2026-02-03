@@ -11,6 +11,9 @@ Streamlit chatbot UI.
 - Chat-style QnA with sources
 - Switch providers via env vars
 
+## Demo
+[sample_streamlit.mp4](sample_streamlit.mp4)
+
 ## Project Structure
 - `app/` - Streamlit app + app-specific pipeline
 - `notebooks/` - Demo notebook
