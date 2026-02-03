@@ -4,6 +4,8 @@ from .embeddings import get_embeddings
 from .config import (
     PINECONE_API_KEY,
     PINECONE_INDEX_NAME,
+    PINECONE_NAMESPACE,
+    PINECONE_METRIC,
     PINECONE_CLOUD,
     PINECONE_REGION,
 )
@@ -24,7 +26,7 @@ def _get_or_create_index(dimension: int):
         pc.create_index(
             name=PINECONE_INDEX_NAME,
             dimension=dimension,
-            metric="cosine",
+            metric=PINECONE_METRIC,
             spec=ServerlessSpec(cloud=PINECONE_CLOUD, region=PINECONE_REGION),
         )
     return pc.Index(PINECONE_INDEX_NAME)
@@ -45,6 +47,7 @@ def build_pinecone_index(docs):
         docs,
         embeddings,
         index_name=PINECONE_INDEX_NAME,
+        namespace=PINECONE_NAMESPACE,
     )
 
 
@@ -53,4 +56,5 @@ def load_pinecone_index():
     return PineconeVectorStore(
         index_name=PINECONE_INDEX_NAME,
         embedding=embeddings,
+        namespace=PINECONE_NAMESPACE,
     )

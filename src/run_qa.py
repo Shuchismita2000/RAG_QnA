@@ -1,9 +1,9 @@
 import os
 import sys
-from config import DATA_DIR
-from loaders import load_pdfs
-from chunking import chunk_documents
-from vectorstore import (
+from .config import DATA_DIR
+from .loaders import load_pdfs
+from .chunking import chunk_documents
+from .vectorstore import (
     build_pinecone_index,
     load_pinecone_index,
     pinecone_index_is_empty,
@@ -31,11 +31,9 @@ def main():
         sys.exit(1)
 
     vectorstore = ensure_index()
-    qa = build_qa_chain(vectorstore)
-
-    result = qa(question)
-    answer = result.get("result", "")
-    source_docs = result.get("source_documents", [])
+    chain, retriever = build_qa_chain(vectorstore)
+    answer = chain.invoke(question)
+    source_docs = retriever.invoke(question)
 
     print(f"Answer: {answer}\n")
     print("Sources:")
