@@ -44,11 +44,6 @@ LLM_PROVIDER=openai
 EMBEDDING_PROVIDER=openai
 ```
 
-## Run (CLI)
-```bash
-python -m app.run_qa "Your question here"
-```
-
 ## Run (Streamlit)
 ```bash
 streamlit run app/streamlit_app.py
